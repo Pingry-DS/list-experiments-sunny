@@ -125,7 +125,25 @@ public class Experiments {
     }
     return list;
   }
-
+  
+   public static <T>List<T> sortedList(int times, T payload) implements StringRevLexiComparator
+   {
+   		List<T> list = new ArrayList<T>();
+		for(int i = 0; i<times ; i++)
+		{
+			if((((l.get(i).compareTo(l.get(i+1))) == -1) || l.get(i).compareTo(l.get(i+1))) == 0)
+				list.add(i, payload)
+			int x = i;
+			while((l.get(x).compareTo(l.get(x+1))) == 1)
+				x++;
+			list.add(x, payload);
+		}
+		
+		return list;
+	}
+		
+				
+				
   //TODO Use a comparator in this method
   /**
    * Creates a List and inserts the given payload items, in the order they are given. Each item
