@@ -1,5 +1,6 @@
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Experiments {
 
@@ -8,49 +9,45 @@ public class Experiments {
     //TODO Check command line for number of iterations
     int iterations = 5000;
 
+    Scanner keyboard = new Scanner(System.in);
+
     // Keep track of the run time for each call
     long start = System.nanoTime();
     long end = System.nanoTime();
 
     System.out.println("-------------------------------");
-
+    System.out.println("How many head iterations would you like to run?");
+    iterations = keyboard.nextInt();
+    start = System.nanoTime();
     // Make the testing calls and print the time after each
-    while(iterations <= 20000){
-      HeadInsert(iterations, "Hello");
-      end = System.nanoTime();
-      System.out.println(iterations + " iterations at head took " + (end - start)/1000000.0 + "ms.");
-      iterations*=2;
-    }
+    HeadInsert(iterations, "Hello");
+    end = System.nanoTime();
+    System.out.println(iterations + " iterations at head took " + (end - start)/1000000.0 + "ms.");
     System.out.println("-------------------------------");
 
-    iterations = 5000;
-    while(iterations <= 20000){
-      start = end;
-      TailInsert(iterations, "Hello");
-      end = System.nanoTime();
-      System.out.println(iterations + " insertions at tail took " + (end - start)/1000000.0 + "ms.");
-      iterations*=2;
-    }
+    System.out.println("How many tail iterations would you like to run?");
+    iterations = keyboard.nextInt();
+    start = System.nanoTime();
+    TailInsert(iterations, "Hello");
+    end = System.nanoTime();
+    System.out.println(iterations + " insertions at tail took " + (end - start)/1000000.0 + "ms.");
     System.out.println("-------------------------------");
 
-    iterations = 5000;
-    while(iterations <= 20000){
-      start = end;
-      MidpointInsert(iterations, "Hello");
-      end = System.nanoTime();
-      System.out.println(iterations + " insertions at midpoint took " + (end - start)/1000000.0 + "ms.");
-      iterations*=2;
-    }
+    System.out.println("How many midpoint iterations would you like to run?");
+    iterations = keyboard.nextInt();
+    start = System.nanoTime();
+    MidpointInsert(iterations, "Hello");
+    end = System.nanoTime();
+    System.out.println(iterations + " insertions at midpoint took " + (end - start)/1000000.0 + "ms.");
     System.out.println("-------------------------------");
 
-    iterations = 5000;
-    while(iterations <= 20000){
-      start = end;
-      AlternateInsert(iterations, "Hello");
-      end = System.nanoTime();
-      System.out.println(iterations + " alternating insertions took " + (end - start)/1000000.0 + "ms.");
-      iterations*=2;
-    }
+    System.out.println("How many alternating iterations would you like to run?");
+    iterations = keyboard.nextInt();
+    start = System.nanoTime();
+    AlternateInsert(iterations, "Hello");
+    end = System.nanoTime();
+    System.out.println(iterations + " alternating insertions took " + (end - start)/1000000.0 + "ms.");
+
 
     start = end;
     /**
