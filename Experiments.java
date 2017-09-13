@@ -6,31 +6,51 @@ public class Experiments {
   public static void main(String[] args) {
 
     //TODO Check command line for number of iterations
-    int iterations = 10000;
+    int iterations = 5000;
 
     // Keep track of the run time for each call
     long start = System.nanoTime();
-    long end;
+    long end = System.nanoTime();
+
+    System.out.println("-------------------------------");
 
     // Make the testing calls and print the time after each
-    HeadInsert(iterations, "Hello");
-    end = System.nanoTime();
-    System.out.println("Insertion at head took " + (end - start)/1000000.0 + "ms.\n");
+    while(iterations <= 20000){
+      HeadInsert(iterations, "Hello");
+      end = System.nanoTime();
+      System.out.println(iterations + " iterations at head took " + (end - start)/1000000.0 + "ms.");
+      iterations*=2;
+    }
+    System.out.println("-------------------------------");
 
-    start = end;
-    TailInsert(iterations, "Hello");
-    end = System.nanoTime();
-    System.out.println("Insertion at tail took " + (end - start)/1000000.0 + "ms.\n");
+    iterations = 5000;
+    while(iterations <= 20000){
+      start = end;
+      TailInsert(iterations, "Hello");
+      end = System.nanoTime();
+      System.out.println(iterations + " insertions at tail took " + (end - start)/1000000.0 + "ms.");
+      iterations*=2;
+    }
+    System.out.println("-------------------------------");
 
-    start = end
-    MidpointInsert(iterations, "Hello");
-    end = System.nanoTime();
-    System.out.println("Insertion at midpoint took " + (end - start)/1000000.0 + "ms.\n");
+    iterations = 5000;
+    while(iterations <= 20000){
+      start = end;
+      MidpointInsert(iterations, "Hello");
+      end = System.nanoTime();
+      System.out.println(iterations + " insertions at midpoint took " + (end - start)/1000000.0 + "ms.");
+      iterations*=2;
+    }
+    System.out.println("-------------------------------");
 
-    start = end;
-    AlternateInsert(iterations, "Hello");
-    end = System.nanoTime();
-    System.out.println("Alternate took " + (end - start)/1000000.0 + "ms.\n");
+    iterations = 5000;
+    while(iterations <= 20000){
+      start = end;
+      AlternateInsert(iterations, "Hello");
+      end = System.nanoTime();
+      System.out.println(iterations + " alternating insertions took " + (end - start)/1000000.0 + "ms.");
+      iterations*=2;
+    }
 
     start = end;
     /**
@@ -125,6 +145,8 @@ public class Experiments {
     }
     return list;
   }
+
+
 
   //TODO Use a comparator in this method
   /**
