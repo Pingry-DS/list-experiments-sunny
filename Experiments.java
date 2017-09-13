@@ -51,6 +51,15 @@ public class Experiments {
       System.out.println(iterations + " alternating insertions took " + (end - start)/1000000.0 + "ms.");
       iterations*=2;
     }
+    System.out.println("-------------------------------");
+
+    iterations = 5000;
+    while(iterations <= 20000){
+      start = end;
+      sortedInsert(iterations, "Hello");
+      end = System.nanoTime();
+      System.out.println(iterations + " Sorted insertions took " + (end - start)/1000000.0 + "ms.");
+      iterations*=2;
 
     start = end;
     /**
@@ -116,7 +125,7 @@ public class Experiments {
    * items were arranged in a circle with new items inserted after every other existing item.
    *
    * @param times How many times the payload should be inserted
-   * @param payload The actual string to be inserted
+   * @param payload 4The actual string to be inserted
    * @return A reference to the constructed List
    */
   public static <T>List<T> AlternateInsert(int times, T payload) {
