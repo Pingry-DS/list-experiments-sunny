@@ -1,5 +1,8 @@
-import java.util.List;
-import java.util.ArrayList;
+
+
+
+
+import java.util.Scanner;
 
 public class Experiments {
 
@@ -7,12 +10,18 @@ public class Experiments {
 
     //TODO Check command line for number of iterations
     int iterations = 5000;
+//<<<<<<< HEAD
+//=======
+
+    Scanner keyboard = new Scanner(System.in);
+//>>>>>>> 140c846b1b3379728107007d8c777d3d9e26bc77
 
     // Keep track of the run time for each call
     long start = System.nanoTime();
     long end = System.nanoTime();
 
     System.out.println("-------------------------------");
+//<<<<<<< HEAD
 
     // Make the testing calls and print the time after each
     while(iterations <= 20000){
@@ -60,6 +69,40 @@ public class Experiments {
       end = System.nanoTime();
       System.out.println(iterations + " Sorted insertions took " + (end - start)/1000000.0 + "ms.");
       iterations*=2;
+=======
+    System.out.println("How many head iterations would you like to run?");
+    iterations = keyboard.nextInt();
+    start = System.nanoTime();
+    // Make the testing calls and print the time after each
+    HeadInsert(iterations, "Hello");
+    end = System.nanoTime();
+    System.out.println(iterations + " iterations at head took " + (end - start)/1000000.0 + "ms.");
+    System.out.println("-------------------------------");
+
+    System.out.println("How many tail iterations would you like to run?");
+    iterations = keyboard.nextInt();
+    start = System.nanoTime();
+    TailInsert(iterations, "Hello");
+    end = System.nanoTime();
+    System.out.println(iterations + " insertions at tail took " + (end - start)/1000000.0 + "ms.");
+    System.out.println("-------------------------------");
+
+    System.out.println("How many midpoint iterations would you like to run?");
+    iterations = keyboard.nextInt();
+    start = System.nanoTime();
+    MidpointInsert(iterations, "Hello");
+    end = System.nanoTime();
+    System.out.println(iterations + " insertions at midpoint took " + (end - start)/1000000.0 + "ms.");
+    System.out.println("-------------------------------");
+
+    System.out.println("How many alternating iterations would you like to run?");
+    iterations = keyboard.nextInt();
+    start = System.nanoTime();
+    AlternateInsert(iterations, "Hello");
+    end = System.nanoTime();
+    System.out.println(iterations + " alternating insertions took " + (end - start)/1000000.0 + "ms.");
+
+>>>>>>> 140c846b1b3379728107007d8c777d3d9e26bc77
 
     start = end;
     /**
@@ -153,26 +196,28 @@ public class Experiments {
       }
     }
     return list;
-  }
-  
+
+
    public static <T>List<T> sortedList(int times, T payload) implements StringRevLexiComparator
    {
    		List<T> list = new ArrayList<T>();
 		for(int i = 0; i<times ; i++)
 		{
 			if((((l.get(i).compareTo(l.get(i+1))) == -1) || l.get(i).compareTo(l.get(i+1))) == 0)
-				list.add(i, payload)
+				list.add(i, payload);
 			int x = i;
 			while((l.get(x).compareTo(l.get(x+1))) == 1)
 				x++;
 			list.add(x, payload);
 		}
-		
+
 		return list;
-	}
-		
-				
-				
+ 	}
+}
+}
+
+
+
   //TODO Use a comparator in this method
   /**
    * Creates a List and inserts the given payload items, in the order they are given. Each item

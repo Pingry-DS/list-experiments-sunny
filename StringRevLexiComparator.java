@@ -5,9 +5,9 @@ public class StringRevLexiComparator implements Comparator<String>
 	public int compare(String a, String b)
 	{
 		if(a.compareTo(b) < 0)
-			return a.compareTo(b)*-1;
+			return -1;
 		if(a.compareTo(b) > 0)
-			return a.compareTo(b)*-1;
+			return 1;
 		if(a.compareTo(b) == 0)
 			return 0;
 	}
